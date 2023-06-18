@@ -4,7 +4,7 @@ from fastai.vision.all import *
 
 path = os.path.dirname(os.path.abspath(__file__))
 model1_path = os.path.join(path, 'resnet18.pkl')
-model2_path = os.path.join(path, 'vgg.pkl')
+model2_path = os.path.join(path, 'VGG.pkl')
 
 learn1 = load_learner(model1_path)
 learn2 = load_learner(model2_path)
