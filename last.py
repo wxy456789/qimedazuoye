@@ -23,7 +23,7 @@ if uploaded_file is not None:
         st.write(f"resent18 识别结果: {pred1}; 准确率"f": {probs1[pred1_idx]:.04f}")
         st.write(f"vgg 识别结果: {pred2}; 准确率: {probs2[pred2_idx]:.04f}")
         # 如果两个模型的预测概率都低于0.8提示上传的图片有问题
-        if probs1[pred1_idx] < 0.9 and probs2[pred2_idx] < 0.7:
+        if probs1[pred1_idx] < 0.8 and probs2[pred2_idx] < 0.8:
             st.warning("你上传的图片识别准确率较低，有可能不是四大名楼的照片")
 
     # 关闭文件上传对象，释放内存空间
