@@ -11,6 +11,7 @@ learn2 = load_learner(model2_path)
 
 uploaded_file = st.file_uploader("上传一张四大名楼的图片", type=["jpg", "jpeg", "png"])
 
+names = {"twg": "滕王阁", "yyl": "岳阳楼", "hhl": "黄鹤楼", "gql": "鹳雀楼"}
 if uploaded_file is not None:
     try:
         img = PILImage.create(uploaded_file)
@@ -20,8 +21,10 @@ if uploaded_file is not None:
         st.image(img.to_thumb(500, 500), caption='Your Image')
         pred1, pred1_idx, probs1 = learn1.predict(img)
         pred2, pred2_idx, probs2 = learn2.predict(img)
-        st.write(f"resent18 识别结果: {pred1}; 准确率"f": {probs1[pred1_idx]:.04f}")
-        st.write(f"vgg 识别结果: {pred2}; 准确率: {probs2[pred2_idx]:.04f}")
+        st.write(f"Model1 Prediction: {names.get(str(pred1), 'Unknown')}; Probability: {probs1[pred1_idx]:.04f}")
+        st.write(f"Model2 Prediction: {names.get(str(pred2), 'Unknown')}; Probability: {probs2[pred2_idx]:.04f}")
+ 
+
         # 如果两个模型的预测概率都低于0.8提示上传的图片有问题
         if probs1[pred1_idx] < 0.8 or probs2[pred2_idx] < 0.8:
             st.warning("你上传的图片识别准确率较低，有可能不是四大名楼的照片")
