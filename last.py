@@ -21,8 +21,8 @@ if uploaded_file is not None:
         st.image(img.to_thumb(500, 500), caption='Your Image')
         pred1, pred1_idx, probs1 = learn1.predict(img)
         pred2, pred2_idx, probs2 = learn2.predict(img)
-        st.write(f"Model1 Prediction: {names.get(str(pred1), 'Unknown')}; Probability: {probs1[pred1_idx]:.04f}")
-        st.write(f"Model2 Prediction: {names.get(str(pred2), 'Unknown')}; Probability: {probs2[pred2_idx]:.04f}")
+        st.write(f"resnet-18模型： 识别结果: {names.get(str(pred1), 'Unknown')}; 准确率: {probs1[pred1_idx]:.04f}")
+        st.write(f"VGG-16模型 识别结果: {names.get(str(pred2), 'Unknown')}; 准确率: {probs2[pred2_idx]:.04f}")
  
 
         # 如果两个模型的预测概率都低于0.8提示上传的图片有问题
